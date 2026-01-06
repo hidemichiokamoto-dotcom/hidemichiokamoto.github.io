@@ -131,6 +131,8 @@
     .pub-title{ font-weight: 800; display:block; margin-bottom:4px; }
     .pub-authors{ color: var(--muted); display:block; }
     .pub-venue{ color: var(--muted); display:block; }
+    .pub-doi{ color: var(--muted); display:block; margin-top:6px; }
+
     .tagrow{ margin-top:8px; }
     .tag{
       display:inline-block;
@@ -209,13 +211,15 @@
     <h2>About</h2>
     <p>
       大垣女子短期大学に所属し、教育工学および数学教育を専門としています。
-      VR/AR/2D環境における図形知覚、AI支援によるFermi Problems、Remote International Exchange、創造性の測定・育成に関する研究を行っています。
+      VR/AR/2D環境における図形知覚、AI支援によるフェルミ推定・数学的モデリング、
+      国際遠隔交流（Remote International Exchange）、創造性の測定・育成に関する研究を行っています。
     </p>
     <div>
       <span class="pill">Ogaki Women’s College</span>
       <span class="pill">VR/AR/2D</span>
       <span class="pill">Spatial Perception</span>
-      <span class="pill">Fermi Problems</span>
+      <span class="pill">Fermi Estimation</span>
+      <span class="pill">Mathematical Modelling</span>
       <span class="pill">Creativity</span>
       <span class="pill">Remote International Exchange</span>
     </div>
@@ -233,7 +237,7 @@
           <div class="ar-card">
             <strong>ARモデル（デモ）</strong><br/>
             <span style="color:var(--muted); font-size:13px;">
-              スマホで開くとイメージしやすいです（QRも併記）。
+              スマホで開くとイメージしやすいです。
             </span>
             <div style="margin-top:8px;">
               <a class="cta" href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
@@ -248,7 +252,6 @@
             </div>
           </div>
 
-          <!-- QRコードは外部のQR画像生成サービスを利用 -->
           <div>
             <img class="qr"
               alt="ARモデルへのQRコード"
@@ -261,13 +264,23 @@
       </div>
 
       <div class="box">
-        <h3>AI支援によるFermi Problems / Mathematical Modelling Task</h3>
-        <p>推定・検証・説明のプロセスを支援し、方略や学習の変化を分析する研究を行っています。</p>
+        <h3>AI支援によるフェルミ推定・数学的モデリング</h3>
+        <p>
+          フェルミ推定および数学的モデリングにおいて、問題の構造化・仮定設定・数量化・検証・説明のプロセスをAIが支援する学習環境を設計し、
+          生徒・学生の方略や思考過程、柔軟性の変化を分析する研究を行っています。
+        </p>
+        <p style="color:var(--muted); font-size:14px; margin-top:6px;">
+          ※ フェルミ推定：現実の曖昧な事象を仮定と推定によって数量化する課題 ／
+          数学的モデリング：現実世界の問題を数理的に表現し解釈する過程
+        </p>
       </div>
 
       <div class="box">
-        <h3>教育DX：生成AIを用いた学習支援設計</h3>
-        <p>授業設計・教材開発・評価を通して、学習環境の改善を探究する研究を行っています。</p>
+        <h3>国際遠隔交流（Remote International Exchange）による数学教育の共同ゼミ</h3>
+        <p>
+          ドイツの研究者・大学と連携し、教員養成課程の学生を対象とした数学教育に関する国際遠隔共同ゼミを実施しています。
+          Zoomの自動翻訳字幕機能等を活用し、言語の壁を越えた協働的学習環境の設計と教育的効果を検討する研究を行っています。
+        </p>
       </div>
 
       <div class="box">
@@ -281,7 +294,9 @@
     <h2>Publications</h2>
 
     <p style="margin:0 0 12px; color: var(--muted);">
-      代表的な業績（Selected Publications）を掲載しています。その他の業績は researchmap でご確認いただけます。
+      代表的な業績（Selected Publications）を掲載しています。その他の業績は
+      <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">researchmap</a>
+      をご覧ください。
     </p>
 
     <ul class="pubs">
@@ -290,9 +305,12 @@
           Analysis of the Relationship between Creativity in Fermi Problems Measured by Applying Information Theory, Creativity in Psychology, and Mathematical Creativity
         </span>
         <span class="pub-authors">Hidemichi Okamoto, Mutfried Hartmann, Tetsushi Kawasaki</span>
-        <span class="pub-venue">Education Sciences 13(3), 2023-03-18</span>
+        <span class="pub-venue">Education Sciences 13(3), 315, 2023-03-18</span>
+        <span class="pub-doi">
+          DOI: <a href="https://doi.org/10.3390/educsci13030315" target="_blank" rel="noreferrer">10.3390/educsci13030315</a>
+        </span>
         <div class="tagrow">
-          <span class="tag">Creativity</span><span class="tag">Fermi Problems</span><span class="tag">Information Theory</span>
+          <span class="tag">Creativity</span><span class="tag">Fermi Estimation</span><span class="tag">Information Theory</span>
         </div>
       </li>
 
@@ -301,9 +319,12 @@
           CAN MATHEMATICAL MODELING ACTIVITIES BE ENHANCED USING HEAD-MOUNTED DISPLAY-TYPE VIRTUAL REALITY?
         </span>
         <span class="pub-authors">Hidemichi Okamoto</span>
-        <span class="pub-venue">17th International Conference on Education and New Learning Technologies (EDULEARN25), 1932–1941, 2025-07</span>
+        <span class="pub-venue">EDULEARN25 Proceedings, 1932–1941, 2025-07</span>
+        <span class="pub-doi">
+          DOI: <a href="https://doi.org/10.21125/edulearn.2025.0565" target="_blank" rel="noreferrer">10.21125/edulearn.2025.0565</a>
+        </span>
         <div class="tagrow">
-          <span class="tag">VR</span><span class="tag">Mathematical Modeling</span>
+          <span class="tag">VR</span><span class="tag">Mathematical Modelling</span>
         </div>
       </li>
 
@@ -313,6 +334,9 @@
         </span>
         <span class="pub-authors">Hidemichi Okamoto, Hironori Tachizaki</span>
         <span class="pub-venue">Journal of Educational Technology Development and Exchange 18(1), 117–126, 2025-06</span>
+        <span class="pub-doi">
+          DOI: <a href="https://doi.org/10.18785/jetde.1802.06" target="_blank" rel="noreferrer">10.18785/jetde.1802.06</a>
+        </span>
         <div class="tagrow">
           <span class="tag">AI</span><span class="tag">Children</span><span class="tag">Image Editing</span>
         </div>
@@ -324,6 +348,9 @@
         </span>
         <span class="pub-authors">Hidemichi Okamoto, Kyomi Takuma, Thomas Borys, Tetsushi Kawasaki</span>
         <span class="pub-venue">2025 International Conference on Culture-Oriented Science & Technology (CoST), 37–42, 2025-09</span>
+        <span class="pub-doi">
+          DOI: <a href="https://doi.org/10.1109/CoST68045.2025.00017" target="_blank" rel="noreferrer">10.1109/CoST68045.2025.00017</a>
+        </span>
         <div class="tagrow">
           <span class="tag">Remote International Exchange</span><span class="tag">Zoom</span><span class="tag">Translation</span>
         </div>
@@ -344,8 +371,8 @@
     <h2>Projects</h2>
     <ul>
       <li><strong>VR/AR/2D Pilot Study</strong>：課題デザイン・計測（反応時間/正確性）・分析</li>
-      <li><strong>Fermi-AI</strong>：生徒の推定方略や柔軟性を支援する対話設計</li>
-      <li><strong>Remote International Exchange</strong>：日独の教員養成学生の協働学習（Zoom字幕等）</li>
+      <li><strong>AI支援によるフェルミ推定・数学的モデリング</strong>：推定・検証・説明を支援する対話設計</li>
+      <li><strong>国際遠隔共同ゼミ（数学教育）</strong>：日独の教員養成学生の協働学習（Zoom字幕等）</li>
     </ul>
   </section>
 
