@@ -15,15 +15,31 @@
       --accent: #1f6feb;
       --shadow: 0 10px 30px rgba(0,0,0,.06);
       --radius: 16px;
+
+      /* section background slabs (subtle, consistent) */
+      --slab-a: #f7f8fb;   /* base soft gray */
+      --slab-b: #f3f6ff;   /* soft blue */
+      --slab-c: #f6f5ff;   /* soft violet */
+      --slab-d: #f7fafc;   /* soft cool gray */
+      --slab-e: #f6f8f7;   /* soft green-gray (very subtle) */
     }
+
     *{ box-sizing:border-box; }
     html,body{ margin:0; padding:0; }
+
+    /* Smooth jump + offset for sticky header (PC) */
+    html{
+      scroll-behavior: smooth;
+      scroll-padding-top: 128px; /* ← PCのズレ対策：ここを増やしました */
+    }
+
     body{
       font-family: system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
       color: var(--text);
       line-height: 1.75;
       background: linear-gradient(180deg, #ffffff 0%, #fbfbfe 100%);
     }
+
     a{ color: var(--accent); text-decoration:none; }
     a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
@@ -31,31 +47,51 @@
 
     header{
       position: sticky; top: 0;
-      background: rgba(255,255,255,.9);
+      background: rgba(255,255,255,.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
       z-index: 10;
     }
-    .top{ display:flex; align-items:center; justify-content:space-between; gap:14px; padding:16px 0; }
+    .top{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:16px 0;
+    }
     .title h1{ margin:0; font-size: 24px; letter-spacing:.2px; }
     .title .en{ font-size: 13px; color: var(--muted); font-weight:600; margin-left:8px; }
     .subtitle{ margin:6px 0 0; color: var(--muted); }
 
     nav{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    nav a{ display:inline-block; padding:8px 10px; border-radius: 999px; color: var(--text); border: 1px solid transparent; font-size:14px; }
+    nav a{
+      display:inline-block; padding:8px 10px; border-radius: 999px;
+      color: var(--text); border: 1px solid transparent; font-size:14px;
+    }
     nav a:hover{ border-color: var(--line); background: #fff; text-decoration:none; }
     .note-link{ font-size:12px; color: var(--muted); padding:6px 8px; }
     .lang-link{ font-size:12px; color: var(--muted); padding:6px 8px; border:1px solid var(--line); border-radius:999px; background:#fff; }
 
-    main{ padding: 16px 0 40px; }
+    main{ padding: 0 0 40px; }
+
+    /* Section slab: subtle background area per section */
+    .section-slab{
+      border-top: 1px solid rgba(0,0,0,0);
+      padding: 18px 0;
+    }
+    .slab-about{ background: var(--slab-a); }
+    .slab-research{ background: var(--slab-b); }
+    .slab-publications{ background: var(--slab-d); }
+    .slab-kakenhi{ background: var(--slab-c); }
+    .slab-contact{ background: var(--slab-e); }
+
+    /* Make anchor jumps land nicely under sticky header (PC) */
+    section{ scroll-margin-top: 128px; } /* ← PCのズレ対策：ここも同じ値に */
 
     .card{
-      background: var(--card);
+      background: rgba(255,255,255,.75);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 16px 16px 12px;
-      margin: 14px 0;
+      margin: 0;
     }
     .card h2{ margin:0 0 10px; font-size:18px; letter-spacing:.2px; }
 
@@ -88,7 +124,7 @@
     .tagrow{ margin-top:8px; }
     .tag{ display:inline-block; font-size:12px; padding:4px 8px; border-radius:999px; background:#f2f4ff; border:1px solid #e6e9ff; color:#2b3a67; margin-right:6px; }
 
-    /* === Research Vision Styling === */
+    /* Research Vision */
     .vision-box{
       margin: 10px 0 18px; padding: 18px 20px;
       background: linear-gradient(135deg, #f5f7ff 0%, #eef2ff 100%);
@@ -98,7 +134,7 @@
     .vision-text{ font-size: 22px; font-weight: 900; line-height: 1.6; color: #1f2a44; margin-bottom: 6px; letter-spacing: .02em; }
     .vision-sub{ font-size: 13px; color: #5f6368; }
 
-    /* === AR demo layout: left text + right QR (as in your screenshot) === */
+    /* AR demo layout: left text + right QR */
     .ar-row{
       display:grid;
       grid-template-columns: 1fr 180px;
@@ -120,19 +156,30 @@
       text-align:center;
       box-shadow: 0 8px 20px rgba(0,0,0,.05);
     }
-    .qr{
-      width: 160px; height: 160px; border-radius: 10px; display:block; margin: 0 auto;
-    }
+    .qr{ width: 160px; height: 160px; border-radius: 10px; display:block; margin: 0 auto; }
     .scan-note{ margin-top:6px; color:var(--muted); font-size:12px; }
 
-    footer{ color: var(--muted); text-align:center; padding: 18px 0 28px; border-top: 1px solid var(--line); margin-top: 28px; }
+    footer{
+      color: var(--muted);
+      text-align:center;
+      padding: 18px 0 28px;
+      border-top: 1px solid var(--line);
+      margin-top: 0;
+      background: #fff;
+    }
 
     @media (max-width: 820px){
+      .wrap{ padding: 16px; }
       .top{ flex-direction:column; align-items:flex-start; }
       .grid{ grid-template-columns: 1fr; }
       nav{ display:flex; flex-wrap:wrap; gap:4px; }
+
+      /* Mobile offset can be a bit larger */
+      html{ scroll-padding-top: 140px; }
+      section{ scroll-margin-top: 140px; }
+
       .vision-text{ font-size: 20px; }
-      .ar-row{ grid-template-columns: 1fr; } /* stack on mobile */
+      .ar-row{ grid-template-columns: 1fr; }
       .qr{ width: 180px; height: 180px; }
     }
   </style>
@@ -159,212 +206,222 @@
   </div>
 </header>
 
-<main class="wrap">
+<main>
 
-  <!-- About -->
-  <section id="about" class="card">
-    <h2>About</h2>
+  <div class="section-slab slab-about">
+    <div class="wrap">
+      <section id="about" class="card">
+        <h2>About</h2>
 
-    <!-- Research Vision -->
-    <div class="vision-box">
-      <div class="vision-title">Research Vision</div>
-      <div class="vision-text">思考が動き、創造が始まる瞬間をデザインする。</div>
-      <div class="vision-sub">VR/AR・AI・フェルミ推定・数学的モデリング・国際遠隔協働学習を通して</div>
+        <div class="vision-box">
+          <div class="vision-title">Research Vision</div>
+          <div class="vision-text">思考が動き、創造が始まる瞬間をデザインする。</div>
+          <div class="vision-sub">VR/AR・AI・フェルミ推定・数学的モデリング・国際遠隔協働学習を通して</div>
+        </div>
+
+        <p>
+          教育工学および数学教育を専門としています。
+          VR/AR/2D環境における図形知覚、AI支援によるフェルミ推定・数学的モデリング、
+          国際遠隔交流（Remote International Exchange）、創造性の測定・育成に関する研究を行っています。
+        </p>
+        <div>
+          <span class="pill">VR/AR/2D</span>
+          <span class="pill">Spatial Perception</span>
+          <span class="pill">Fermi Estimation</span>
+          <span class="pill">Mathematical Modelling</span>
+          <span class="pill">Creativity</span>
+          <span class="pill">Remote International Exchange</span>
+        </div>
+      </section>
     </div>
+  </div>
 
-    <p>
-      教育工学および数学教育を専門としています。
-      VR/AR/2D環境における図形知覚、AI支援によるフェルミ推定・数学的モデリング、
-      国際遠隔交流（Remote International Exchange）、創造性の測定・育成に関する研究を行っています。
-    </p>
-    <div>
-      <span class="pill">VR/AR/2D</span>
-      <span class="pill">Spatial Perception</span>
-      <span class="pill">Fermi Estimation</span>
-      <span class="pill">Mathematical Modelling</span>
-      <span class="pill">Creativity</span>
-      <span class="pill">Remote International Exchange</span>
-    </div>
-  </section>
+  <div class="section-slab slab-research">
+    <div class="wrap">
+      <section id="research" class="card">
+        <h2>Research</h2>
 
-  <!-- Research -->
-  <section id="research" class="card">
-    <h2>Research</h2>
+        <div class="grid">
+          <div class="box">
+            <h3>VR/AR/2D環境における空間・図形知覚</h3>
+            <p>反応時間・正確性を中心に、知覚理論と接続して比較研究を行っています。</p>
 
-    <div class="grid">
-      <!-- Box 1: Spatial Perception + AR demo with QR on the right -->
-      <div class="box">
-        <h3>VR/AR/2D環境における空間・図形知覚</h3>
-        <p>反応時間・正確性を中心に、知覚理論と接続して比較研究を行っています。</p>
+            <div class="ar-row">
+              <div class="ar-left">
+                <strong>ARモデル（デモ）</strong><br/>
+                <span style="color:var(--muted); font-size:13px;">スマホで開くとイメージしやすいです。</span>
+                <div style="margin-top:10px;">
+                  <a class="cta" href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
+                    ARモデルを開く →
+                  </a>
+                  <div class="cta-sub">
+                    URL:
+                    <a href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
+                      hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-        <div class="ar-row">
-          <div class="ar-left">
-            <strong>ARモデル（デモ）</strong><br/>
-            <span style="color:var(--muted); font-size:13px;">スマホで開くとイメージしやすいです。</span>
-            <div style="margin-top:10px;">
-              <a class="cta" href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
-                ARモデルを開く →
-              </a>
-              <div class="cta-sub">
-                URL:
-                <a href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
-                  hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/
-                </a>
+              <div class="ar-right">
+                <img class="qr"
+                  alt="ARモデルへのQRコード"
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fhidemichiokamoto-dotcom.github.io%2Far-pilotstudy02%2FGrosse_kugel_volume%2F" />
+                <div class="scan-note">Scan to open AR</div>
               </div>
             </div>
           </div>
 
-          <div class="ar-right">
-            <img class="qr"
-              alt="ARモデルへのQRコード"
-              src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fhidemichiokamoto-dotcom.github.io%2Far-pilotstudy02%2FGrosse_kugel_volume%2F" />
-            <div class="scan-note">Scan to open AR</div>
+          <div class="box">
+            <h3>AI支援によるフェルミ推定・数学的モデリング</h3>
+            <p>
+              フェルミ推定および数学的モデリングにおいて、問題の構造化・仮定設定・数量化・検証・説明のプロセスをAIが支援する学習環境を設計し、
+              生徒・学生の方略や思考過程、柔軟性の変化を分析する研究を行っています。
+            </p>
+            <p style="color:var(--muted); font-size:14px; margin-top:6px;">
+              ※ フェルミ推定：現実の曖昧な事象を仮定と推定によって数量化する課題です。
+              有名な例に「シカゴに何人のピアノ調律師がいますか？」という問いがあります。
+              このような課題は創造性を引き出すと言われています。 ／
+              数学的モデリング：現実世界の問題を数理的に表現し解釈する数学的活動です。
+            </p>
+
+            <div style="margin-top:10px;">
+              <strong>関連書籍：</strong>
+              <a href="https://www.gensu.jp/product/%E5%89%B5%E9%80%A0%E7%9A%84%E6%80%9D%E8%80%83%E5%8A%9B%E3%82%92%E9%AB%98%E3%82%81%E3%82%8B%E6%8E%88%E6%A5%AD%E3%81%A5%E3%81%8F%E3%82%8A%E3%83%BC%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9F%E6%8E%A8%E5%AE%9A/"
+                 target="_blank" rel="noreferrer">
+                創造的思考力を高める授業づくり ― フェルミ推定
+              </a>
+              <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+                ※ 在庫切れの場合は、お手数ですが <a href="#contact">Contact</a> に記載の連絡先までご連絡ください。
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>国際遠隔交流（Remote International Exchange）による数学教育の共同ゼミ</h3>
+            <p>
+              ドイツの研究者・大学と連携し、教員養成課程の学生を対象とした数学教育に関する国際遠隔共同ゼミを実施しています。
+              Zoomの自動翻訳字幕機能等を活用し、言語の壁を越えた協働的学習環境の設計と教育的効果を検討する研究を行っています。
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>創造性の測定・育成（数学教育×教育工学）</h3>
+            <p>創造性を指標化して測定し、課題設計やAI支援によって育成する研究を行っています。</p>
           </div>
         </div>
-      </div>
+      </section>
+    </div>
+  </div>
 
-      <!-- Box 2 -->
-      <div class="box">
-        <h3>AI支援によるフェルミ推定・数学的モデリング</h3>
-        <p>
-          フェルミ推定および数学的モデリングにおいて、問題の構造化・仮定設定・数量化・検証・説明のプロセスをAIが支援する学習環境を設計し、
-          生徒・学生の方略や思考過程、柔軟性の変化を分析する研究を行っています。
-        </p>
-        <p style="color:var(--muted); font-size:14px; margin-top:6px;">
-          ※ フェルミ推定：現実の曖昧な事象を仮定と推定によって数量化する課題です。
-          有名な例に「シカゴに何人のピアノ調律師がいますか？」という問いがあります。
-          このような課題は創造性を引き出すと言われています。 ／
-          数学的モデリング：現実世界の問題を数理的に表現し解釈する数学的活動です。
+  <div class="section-slab slab-publications">
+    <div class="wrap">
+      <section id="publications" class="card">
+        <h2>Publications</h2>
+
+        <p style="margin:0 0 12px; color: var(--muted);">
+          代表的な業績（Selected Publications）を掲載しています。その他の業績は
+          <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">researchmap</a>
+          をご覧ください。
         </p>
 
-        <div style="margin-top:10px;">
-          <strong>関連書籍：</strong>
-          <a href="https://www.gensu.jp/product/%E5%89%B5%E9%80%A0%E7%9A%84%E6%80%9D%E8%80%83%E5%8A%9B%E3%82%92%E9%AB%98%E3%82%81%E3%82%8B%E6%8E%88%E6%A5%AD%E3%81%A5%E3%81%8F%E3%82%8A%E3%83%BC%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9F%E6%8E%A8%E5%AE%9A/"
-             target="_blank" rel="noreferrer">
-            創造的思考力を高める授業づくり ― フェルミ推定
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">
+              Analysis of the Relationship between Creativity in Fermi Problems Measured by Applying Information Theory, Creativity in Psychology, and Mathematical Creativity
+            </span>
+            <span class="pub-authors">Hidemichi Okamoto, Mutfried Hartmann, Tetsushi Kawasaki</span>
+            <span class="pub-venue">Education Sciences 13(3), 315, 2023-03-18</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.3390/educsci13030315" target="_blank" rel="noreferrer">10.3390/educsci13030315</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">Creativity</span><span class="tag">Fermi Estimation</span><span class="tag">Information Theory</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="pub-title">CAN MATHEMATICAL MODELING ACTIVITIES BE ENHANCED USING HEAD-MOUNTED DISPLAY-TYPE VIRTUAL REALITY?</span>
+            <span class="pub-authors">Hidemichi Okamoto</span>
+            <span class="pub-venue">EDULEARN25 Proceedings, 1932–1941, 2025-07</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.21125/edulearn.2025.0565" target="_blank" rel="noreferrer">10.21125/edulearn.2025.0565</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">VR</span><span class="tag">Mathematical Modelling</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              A Study of Image Editing AI Awareness in Children: Can AI that Lets Still Images Speak Capture the Interest of Young Children?
+            </span>
+            <span class="pub-authors">Hidemichi Okamoto, Hironori Tachizaki</span>
+            <span class="pub-venue">Journal of Educational Technology Development and Exchange 18(1), 117–126, 2025-06</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.18785/jetde.1802.06" target="_blank" rel="noreferrer">10.18785/jetde.1802.06</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">AI</span><span class="tag">Children</span><span class="tag">Image Editing</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              Remote International Exchange in Mathematics Education: Evaluating the Educational Impact of Real-Time Translation Technology Using Zoom
+            </span>
+            <span class="pub-authors">Hidemichi Okamoto, Kyomi Takuma, Thomas Borys, Tetsushi Kawasaki</span>
+            <span class="pub-venue">2025 International Conference on Culture-Oriented Science & Technology (CoST), 37–42, 2025-09</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.1109/CoST68045.2025.00017" target="_blank" rel="noreferrer">10.1109/CoST68045.2025.00017</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">Remote International Exchange</span><span class="tag">Zoom</span><span class="tag">Translation</span>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top:14px;">
+          <a class="cta" href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">
+            researchmapで全業績を見る →
           </a>
-          <div style="color:var(--muted); font-size:13px; margin-top:4px;">
-            ※ 在庫切れの場合は、お手数ですが <a href="#contact">Contact</a> に記載の連絡先までご連絡ください。
+          <div class="cta-sub">論文・学会発表・研究費・委員歴など、全情報はこちらに集約しています。</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="section-slab slab-kakenhi">
+    <div class="wrap">
+      <section id="kakenhi" class="card">
+        <h2>KAKENHI（科研費）</h2>
+        <p style="margin:0 0 10px;">科研費（KAKENHI）により、国際連携を基盤としたVR活用の学習カリキュラム・教材開発に取り組んでいます。</p>
+        <div class="box">
+          <h3 style="margin-top:0;">国際連携によるHMD型VRを活用した教科横断的な学習のカリキュラムと教材の開発</h3>
+          <p style="color:var(--muted); margin:0;">KAKENHI Project: 24K22786</p>
+          <div style="margin-top:10px;">
+            <a class="cta" href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K22786" target="_blank" rel="noreferrer">KAKENページを見る →</a>
+            <div class="cta-sub">研究概要・期間・研究組織などの詳細は、上記リンクからご確認ください。</div>
           </div>
         </div>
-      </div>
-
-      <!-- Box 3 -->
-      <div class="box">
-        <h3>国際遠隔交流（Remote International Exchange）による数学教育の共同ゼミ</h3>
-        <p>
-          ドイツの研究者・大学と連携し、教員養成課程の学生を対象とした数学教育に関する国際遠隔共同ゼミを実施しています。
-          Zoomの自動翻訳字幕機能等を活用し、言語の壁を越えた協働的学習環境の設計と教育的効果を検討する研究を行っています。
-        </p>
-      </div>
-
-      <!-- Box 4 -->
-      <div class="box">
-        <h3>創造性の測定・育成（数学教育×教育工学）</h3>
-        <p>創造性を指標化して測定し、課題設計やAI支援によって育成する研究を行っています。</p>
-      </div>
+      </section>
     </div>
-  </section>
+  </div>
 
-  <!-- Publications -->
-  <section id="publications" class="card">
-    <h2>Publications</h2>
-
-    <p style="margin:0 0 12px; color: var(--muted);">
-      代表的な業績（Selected Publications）を掲載しています。その他の業績は
-      <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">researchmap</a>
-      をご覧ください。
-    </p>
-
-    <ul class="pubs">
-      <li>
-        <span class="pub-title">
-          Analysis of the Relationship between Creativity in Fermi Problems Measured by Applying Information Theory, Creativity in Psychology, and Mathematical Creativity
-        </span>
-        <span class="pub-authors">Hidemichi Okamoto, Mutfried Hartmann, Tetsushi Kawasaki</span>
-        <span class="pub-venue">Education Sciences 13(3), 315, 2023-03-18</span>
-        <span class="pub-doi">
-          DOI: <a href="https://doi.org/10.3390/educsci13030315" target="_blank" rel="noreferrer">10.3390/educsci13030315</a>
-        </span>
-        <div class="tagrow">
-          <span class="tag">Creativity</span><span class="tag">Fermi Estimation</span><span class="tag">Information Theory</span>
-        </div>
-      </li>
-
-      <li>
-        <span class="pub-title">CAN MATHEMATICAL MODELING ACTIVITIES BE ENHANCED USING HEAD-MOUNTED DISPLAY-TYPE VIRTUAL REALITY?</span>
-        <span class="pub-authors">Hidemichi Okamoto</span>
-        <span class="pub-venue">EDULEARN25 Proceedings, 1932–1941, 2025-07</span>
-        <span class="pub-doi">
-          DOI: <a href="https://doi.org/10.21125/edulearn.2025.0565" target="_blank" rel="noreferrer">10.21125/edulearn.2025.0565</a>
-        </span>
-        <div class="tagrow">
-          <span class="tag">VR</span><span class="tag">Mathematical Modelling</span>
-        </div>
-      </li>
-
-      <li>
-        <span class="pub-title">
-          A Study of Image Editing AI Awareness in Children: Can AI that Lets Still Images Speak Capture the Interest of Young Children?
-        </span>
-        <span class="pub-authors">Hidemichi Okamoto, Hironori Tachizaki</span>
-        <span class="pub-venue">Journal of Educational Technology Development and Exchange 18(1), 117–126, 2025-06</span>
-        <span class="pub-doi">
-          DOI: <a href="https://doi.org/10.18785/jetde.1802.06" target="_blank" rel="noreferrer">10.18785/jetde.1802.06</a>
-        </span>
-        <div class="tagrow">
-          <span class="tag">AI</span><span class="tag">Children</span><span class="tag">Image Editing</span>
-        </div>
-      </li>
-
-      <li>
-        <span class="pub-title">
-          Remote International Exchange in Mathematics Education: Evaluating the Educational Impact of Real-Time Translation Technology Using Zoom
-        </span>
-        <span class="pub-authors">Hidemichi Okamoto, Kyomi Takuma, Thomas Borys, Tetsushi Kawasaki</span>
-        <span class="pub-venue">2025 International Conference on Culture-Oriented Science & Technology (CoST), 37–42, 2025-09</span>
-        <span class="pub-doi">
-          DOI: <a href="https://doi.org/10.1109/CoST68045.2025.00017" target="_blank" rel="noreferrer">10.1109/CoST68045.2025.00017</a>
-        </span>
-        <div class="tagrow">
-          <span class="tag">Remote International Exchange</span><span class="tag">Zoom</span><span class="tag">Translation</span>
-        </div>
-      </li>
-    </ul>
-
-    <div style="margin-top:14px;">
-      <a class="cta" href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">
-        researchmapで全業績を見る →
-      </a>
-      <div class="cta-sub">論文・学会発表・研究費・委員歴など、全情報はこちらに集約しています。</div>
+  <div class="section-slab slab-contact">
+    <div class="wrap">
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <ul class="meta">
+          <li><strong>Affiliation:</strong> 大垣女子短期大学</li>
+          <li><strong>Email:</strong> <a href="mailto:okamoto@ogaki-tandai.ac.jp">okamoto@ogaki-tandai.ac.jp</a></li>
+          <li style="font-size:13px; color:var(--muted); margin-top:8px;">
+            ※ Notes（note）に掲載している内容は、研究アイデアや実践のメモ書き・ラフな記録が中心です。正式な研究成果は Publications をご参照ください。
+          </li>
+        </ul>
+      </section>
     </div>
-  </section>
-
-  <!-- KAKENHI -->
-  <section id="kakenhi" class="card">
-    <h2>KAKENHI（科研費）</h2>
-    <p style="margin:0 0 10px;">科研費（KAKENHI）により、国際連携を基盤としたVR活用の学習カリキュラム・教材開発に取り組んでいます。</p>
-    <div class="box">
-      <h3 style="margin-top:0;">国際連携によるHMD型VRを活用した教科横断的な学習のカリキュラムと教材の開発</h3>
-      <p style="color:var(--muted); margin:0;">KAKENHI Project: 24K22786</p>
-      <div style="margin-top:10px;">
-        <a class="cta" href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K22786" target="_blank" rel="noreferrer">KAKENページを見る →</a>
-        <div class="cta-sub">研究概要・期間・研究組織などの詳細は、上記リンクからご確認ください。</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="card">
-    <h2>Contact</h2>
-    <ul class="meta">
-      <li><strong>Affiliation:</strong> 大垣女子短期大学</li>
-      <li><strong>Email:</strong> <a href="mailto:okamoto@ogaki-tandai.ac.jp">okamoto@ogaki-tandai.ac.jp</a></li>
-      <li style="font-size:13px; color:var(--muted); margin-top:8px;">
-        ※ Notes（note）に掲載している内容は、研究アイデアや実践のメモ書き・ラフな記録が中心です。正式な研究成果は Publications をご参照ください。
-      </li>
-    </ul>
-  </section>
+  </div>
 
   <footer>© <span id="year"></span> Hidemichi Okamoto</footer>
 
