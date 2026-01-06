@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="岡本英通（教育工学・数学教育・AI/VR/AR・創造性）の研究者サイト" />
+  <meta name="description" content="岡本英通（大垣女子短期大学）| 教育工学・数学教育・AI/VR/AR・創造性" />
   <title>岡本英通 | Research</title>
 
   <style>
@@ -13,23 +13,23 @@
       --muted: #5f6368;
       --line: #e9eaee;
       --card: #f7f8fb;
-      --accent: #1f6feb; /* GitHubっぽい青 */
+      --accent: #1f6feb;
       --shadow: 0 10px 30px rgba(0,0,0,.06);
       --radius: 16px;
     }
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ margin:0; padding:0; }
     body{
       font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
-      background: var(--bg);
       color: var(--text);
       line-height: 1.75;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfbfe 100%);
     }
-    a{ color: var(--accent); text-decoration: none; }
+    a{ color: var(--accent); text-decoration:none; }
     a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
-    /* layout */
     .wrap{ max-width: 980px; margin: 0 auto; padding: 18px; }
+
     header{
       position: sticky;
       top: 0;
@@ -40,18 +40,18 @@
     }
     .top{
       display:flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 16px 0;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:16px 0;
     }
-    .title h1{ margin:0; font-size: 24px; letter-spacing: .2px; }
-    .title .en{ font-size: 13px; color: var(--muted); font-weight: 600; margin-left: 8px; }
-    .subtitle{ margin: 6px 0 0; color: var(--muted); }
+    .title h1{ margin:0; font-size: 24px; letter-spacing:.2px; }
+    .title .en{ font-size: 13px; color: var(--muted); font-weight:600; margin-left:8px; }
+    .subtitle{ margin:6px 0 0; color: var(--muted); }
 
     nav a{
       display:inline-block;
-      padding: 8px 10px;
+      padding:8px 10px;
       border-radius: 999px;
       color: var(--text);
       border: 1px solid transparent;
@@ -59,11 +59,11 @@
     nav a:hover{
       border-color: var(--line);
       background: #fff;
-      text-decoration: none;
+      text-decoration:none;
     }
 
-    /* cards */
     main{ padding: 16px 0 40px; }
+
     .card{
       background: var(--card);
       border: 1px solid var(--line);
@@ -72,16 +72,9 @@
       padding: 16px 16px 12px;
       margin: 14px 0;
     }
-    .card h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing: .2px;
-    }
-    .meta{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
+    .card h2{ margin:0 0 10px; font-size:18px; letter-spacing:.2px; }
+
+    .meta{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
     .meta li{ margin: 6px 0; }
 
     .grid{
@@ -91,7 +84,7 @@
     }
     .box{
       background:#fff;
-      border: 1px solid var(--line);
+      border:1px solid var(--line);
       border-radius: 14px;
       padding: 12px 12px 10px;
     }
@@ -100,13 +93,78 @@
 
     .pill{
       display:inline-block;
-      padding: 6px 10px;
+      padding:6px 10px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
+      border:1px solid var(--line);
+      background:#fff;
+      color: var(--muted);
+      font-size:13px;
+      margin:6px 8px 0 0;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius: 12px;
+      background: var(--accent);
+      color:#fff;
+      font-weight: 800;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .cta:hover{ text-decoration:none; filter: brightness(.97); }
+    .cta-sub{
+      margin:10px 0 0;
       color: var(--muted);
       font-size: 13px;
-      margin: 6px 8px 0 0;
+    }
+
+    .pubs{ list-style:none; padding:0; margin:0; }
+    .pubs li{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+      margin:10px 0;
+    }
+    .pub-title{ font-weight: 800; display:block; margin-bottom:4px; }
+    .pub-authors{ color: var(--muted); display:block; }
+    .pub-venue{ color: var(--muted); display:block; }
+    .tagrow{ margin-top:8px; }
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:999px;
+      background: #f2f4ff;
+      border: 1px solid #e6e9ff;
+      color: #2b3a67;
+      margin-right:6px;
+    }
+
+    .ar-flex{
+      display:flex;
+      gap: 14px;
+      align-items:flex-start;
+      margin-top:10px;
+      flex-wrap: wrap;
+    }
+    .qr{
+      width: 180px;
+      height: 180px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background:#fff;
+      padding:10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.05);
+    }
+    .ar-card{
+      flex: 1 1 320px;
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
     }
 
     footer{
@@ -118,9 +176,10 @@
     }
 
     @media (max-width: 820px){
-      .top{ flex-direction: column; align-items: flex-start; }
+      .top{ flex-direction:column; align-items:flex-start; }
       .grid{ grid-template-columns: 1fr; }
-      nav{ display:flex; flex-wrap: wrap; gap: 6px; }
+      nav{ display:flex; flex-wrap:wrap; gap:6px; }
+      .qr{ width:160px; height:160px; }
     }
   </style>
 </head>
@@ -131,7 +190,7 @@
     <div class="top">
       <div class="title">
         <h1>岡本 英通 <span class="en">(Hidemichi Okamoto)</span></h1>
-        <p class="subtitle">教育工学 / 数学教育 / AI・VR/AR・創造性</p>
+        <p class="subtitle">大垣女子短期大学｜教育工学 / 数学教育 / AI・VR/AR・創造性</p>
       </div>
       <nav aria-label="site navigation">
         <a href="#about">About</a>
@@ -149,52 +208,136 @@
   <section id="about" class="card">
     <h2>About</h2>
     <p>
-      教育工学および数学教育を専門とし、VR/AR/2D環境における図形知覚、AI支援によるFermi Problems、教育DXに関する研究を行っています。
-      日独共同研究や遠隔協働学習の実践も進めています。
+      大垣女子短期大学に所属し、教育工学および数学教育を専門としています。
+      VR/AR/2D環境における図形知覚、AI支援によるFermi Problems、Remote International Exchange、創造性の測定・育成に関する研究を行っています。
     </p>
     <div>
+      <span class="pill">Ogaki Women’s College</span>
       <span class="pill">VR/AR/2D</span>
       <span class="pill">Spatial Perception</span>
       <span class="pill">Fermi Problems</span>
-      <span class="pill">Mathematical Modelling Task</span>
       <span class="pill">Creativity</span>
+      <span class="pill">Remote International Exchange</span>
     </div>
   </section>
 
   <section id="research" class="card">
     <h2>Research</h2>
+
     <div class="grid">
       <div class="box">
         <h3>VR/AR/2D環境における空間・図形知覚</h3>
-        <p>反応時間・正確性を中心に、知覚理論と接続して比較研究を行います。</p>
+        <p>反応時間・正確性を中心に、知覚理論と接続して比較研究を行っています。</p>
+
+        <div class="ar-flex">
+          <div class="ar-card">
+            <strong>ARモデル（デモ）</strong><br/>
+            <span style="color:var(--muted); font-size:13px;">
+              スマホで開くとイメージしやすいです（QRも併記）。
+            </span>
+            <div style="margin-top:8px;">
+              <a class="cta" href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
+                ARモデルを開く →
+              </a>
+              <div class="cta-sub">
+                URL:
+                <a href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
+                  hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- QRコードは外部のQR画像生成サービスを利用 -->
+          <div>
+            <img class="qr"
+              alt="ARモデルへのQRコード"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fhidemichiokamoto-dotcom.github.io%2Far-pilotstudy02%2FGrosse_kugel_volume%2F" />
+            <div style="margin-top:6px; color:var(--muted); font-size:12px; text-align:center;">
+              Scan to open AR
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="box">
         <h3>AI支援によるFermi Problems / Mathematical Modelling Task</h3>
-        <p>推定・検証・説明のプロセスを支援し、方略や学習の変化を分析します。</p>
+        <p>推定・検証・説明のプロセスを支援し、方略や学習の変化を分析する研究を行っています。</p>
       </div>
+
       <div class="box">
         <h3>教育DX：生成AIを用いた学習支援設計</h3>
-        <p>授業設計・教材開発・評価を通して、学習環境の改善を探究します。</p>
+        <p>授業設計・教材開発・評価を通して、学習環境の改善を探究する研究を行っています。</p>
       </div>
+
       <div class="box">
         <h3>創造性の測定・育成（数学教育×教育工学）</h3>
-        <p>創造性の指標化（測定）と、課題設計・AI支援による育成の両面から検討します。</p>
+        <p>創造性を指標化して測定し、課題設計やAI支援によって育成する研究を行っています。</p>
       </div>
     </div>
   </section>
 
   <section id="publications" class="card">
     <h2>Publications</h2>
-    <p style="margin:0 0 8px;">
-      業績一覧は researchmap に掲載しています：
-      <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">
-        https://researchmap.jp/hidemichiokamoto
-      </a>
+
+    <p style="margin:0 0 12px; color: var(--muted);">
+      代表的な業績（Selected Publications）を掲載しています。その他の業績は researchmap でご確認いただけます。
     </p>
-    <ul class="meta">
-      <li>最新の論文・学会発表・研究費等は上記リンクからご覧ください。</li>
-      <li>必要に応じて、このページに「代表業績（Selected Publications）」を追記できます。</li>
+
+    <ul class="pubs">
+      <li>
+        <span class="pub-title">
+          Analysis of the Relationship between Creativity in Fermi Problems Measured by Applying Information Theory, Creativity in Psychology, and Mathematical Creativity
+        </span>
+        <span class="pub-authors">Hidemichi Okamoto, Mutfried Hartmann, Tetsushi Kawasaki</span>
+        <span class="pub-venue">Education Sciences 13(3), 2023-03-18</span>
+        <div class="tagrow">
+          <span class="tag">Creativity</span><span class="tag">Fermi Problems</span><span class="tag">Information Theory</span>
+        </div>
+      </li>
+
+      <li>
+        <span class="pub-title">
+          CAN MATHEMATICAL MODELING ACTIVITIES BE ENHANCED USING HEAD-MOUNTED DISPLAY-TYPE VIRTUAL REALITY?
+        </span>
+        <span class="pub-authors">Hidemichi Okamoto</span>
+        <span class="pub-venue">17th International Conference on Education and New Learning Technologies (EDULEARN25), 1932–1941, 2025-07</span>
+        <div class="tagrow">
+          <span class="tag">VR</span><span class="tag">Mathematical Modeling</span>
+        </div>
+      </li>
+
+      <li>
+        <span class="pub-title">
+          A Study of Image Editing AI Awareness in Children: Can AI that Lets Still Images Speak Capture the Interest of Young Children?
+        </span>
+        <span class="pub-authors">Hidemichi Okamoto, Hironori Tachizaki</span>
+        <span class="pub-venue">Journal of Educational Technology Development and Exchange 18(1), 117–126, 2025-06</span>
+        <div class="tagrow">
+          <span class="tag">AI</span><span class="tag">Children</span><span class="tag">Image Editing</span>
+        </div>
+      </li>
+
+      <li>
+        <span class="pub-title">
+          Remote International Exchange in Mathematics Education: Evaluating the Educational Impact of Real-Time Translation Technology Using Zoom
+        </span>
+        <span class="pub-authors">Hidemichi Okamoto, Kyomi Takuma, Thomas Borys, Tetsushi Kawasaki</span>
+        <span class="pub-venue">2025 International Conference on Culture-Oriented Science & Technology (CoST), 37–42, 2025-09</span>
+        <div class="tagrow">
+          <span class="tag">Remote International Exchange</span><span class="tag">Zoom</span><span class="tag">Translation</span>
+        </div>
+      </li>
     </ul>
+
+    <div style="margin-top:14px;">
+      <a class="cta" href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">
+        researchmapで全業績を見る →
+      </a>
+      <div class="cta-sub">
+        論文・学会発表・研究費・委員歴など、全情報はこちらに集約しています。
+      </div>
+    </div>
   </section>
 
   <section id="projects" class="card">
@@ -209,8 +352,8 @@
   <section id="contact" class="card">
     <h2>Contact</h2>
     <ul class="meta">
-      <li><strong>Email:</strong> <a href="mailto:yourmail@example.com">yourmail@example.com</a></li>
-      <li><strong>GitHub:</strong> <a href="https://github.com/hidemichiokamoto-dotcom" target="_blank" rel="noreferrer">https://github.com/hidemichiokamoto-dotcom</a></li>
+      <li><strong>Affiliation:</strong> 大垣女子短期大学</li>
+      <li><strong>Email:</strong> <a href="mailto:okamoto@ogaki-tandai.ac.jp">okamoto@ogaki-tandai.ac.jp</a></li>
       <li><strong>researchmap:</strong> <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">https://researchmap.jp/hidemichiokamoto</a></li>
     </ul>
   </section>
