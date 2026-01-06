@@ -8,215 +8,501 @@
 
   <style>
     :root{
-      --text:#111;
-      --muted:#5f6368;
-      --line:#e9eaee;
-      --accent:#1f6feb;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --text: #111;
+      --muted: #5f6368;
+      --line: #e9eaee;
+      --card: rgba(255,255,255,.78);
+      --accent: #1f6feb;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 16px;
 
-      /* blue-based soft backgrounds */
-      --bg-about:#f5f8ff;
-      --bg-research:#f2f7ff;
-      --bg-publications:#f6f9ff;
-      --bg-kakenhi:#f3f6ff;
-      --bg-contact:#f7faff;
+      /* ==== Section backgrounds (subtle blue-based palette) ==== */
+      --slab-about: #f5f8ff;
+      --slab-research: #f2f7ff;
+      --slab-publications: #f6f9ff;
+      --slab-kakenhi: #f3f6ff;
+      --slab-contact: #f7faff;
+
+      --vision-bg-1: #f4f7ff;
+      --vision-bg-2: #edf2ff;
+      --vision-border: #e2e6ff;
+      --vision-title: #4b5cc4;
+      --vision-text: #1f2a44;
     }
 
-    *{box-sizing:border-box;}
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
+
     html{
-      scroll-behavior:smooth;
-      scroll-padding-top:128px;
+      scroll-behavior: smooth;
+      scroll-padding-top: 128px;
     }
+
     body{
-      margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-      line-height:1.75;
-      color:var(--text);
-      background:#fbfcff;
+      font-family: system-ui,-apple-system,"Segoe UI","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+      color: var(--text);
+      line-height: 1.75;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfbfe 100%);
     }
 
-    a{color:var(--accent);text-decoration:none;}
-    a:hover{text-decoration:underline;}
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
 
-    .wrap{max-width:980px;margin:0 auto;padding:18px;}
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 18px; }
 
     header{
-      position:sticky;top:0;z-index:10;
-      background:rgba(255,255,255,.92);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid var(--line);
+      position: sticky; top: 0;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
     }
     .top{
-      display:flex;justify-content:space-between;align-items:center;
-      gap:14px;padding:16px 0;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding:16px 0;
     }
-    h1{margin:0;font-size:24px;}
-    .en{font-size:13px;color:var(--muted);margin-left:6px;}
-    .subtitle{margin:6px 0 0;color:var(--muted);}
+    .title h1{ margin:0; font-size: 24px; letter-spacing:.2px; }
+    .title .en{ font-size: 13px; color: var(--muted); font-weight:600; margin-left:8px; }
+    .subtitle{ margin:6px 0 0; color: var(--muted); }
 
+    nav{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
     nav a{
-      padding:8px 10px;border-radius:999px;font-size:14px;
+      display:inline-block; padding:8px 10px; border-radius: 999px;
+      color: var(--text); border: 1px solid transparent; font-size:14px;
     }
-    nav a:hover{background:#fff;border:1px solid var(--line);}
+    nav a:hover{ border-color: var(--line); background: #fff; text-decoration:none; }
+    .note-link{ font-size:12px; color: var(--muted); padding:6px 8px; }
+    .lang-link{ font-size:12px; color: var(--muted); padding:6px 8px; border:1px solid var(--line); border-radius:999px; background:#fff; }
 
-    section{scroll-margin-top:128px;}
+    main{ padding: 0 0 40px; }
 
-    .slab{padding:18px 0;}
-    .about{background:var(--bg-about);}
-    .research{background:var(--bg-research);}
-    .publications{background:var(--bg-publications);}
-    .kakenhi{background:var(--bg-kakenhi);}
-    .contact{background:var(--bg-contact);}
+    /* Section slab */
+    .section-slab{ padding: 18px 0; }
+    .slab-about{ background: var(--slab-about); }
+    .slab-research{ background: var(--slab-research); }
+    .slab-publications{ background: var(--slab-publications); }
+    .slab-kakenhi{ background: var(--slab-kakenhi); }
+    .slab-contact{ background: var(--slab-contact); }
+
+    /* Anchor offset */
+    section{ scroll-margin-top: 128px; }
 
     .card{
-      background:rgba(255,255,255,.8);
+      background: var(--card);
+      border: 1px solid rgba(233,234,238,.95);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px 12px;
+      margin: 0;
+    }
+    .card h2{ margin:0 0 10px; font-size:18px; letter-spacing:.2px; }
+
+    .meta{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+    .meta li{ margin: 6px 0; }
+
+    .grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .box{
+      background:#fff;
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:16px;
+      border-radius: 14px;
+      padding: 12px 12px 10px;
     }
-
-    h2{margin-top:0;font-size:18px;}
-
-    /* About header with portrait */
-    .about-head{
-      display:flex;gap:16px;align-items:flex-start;
-    }
-    .portrait-wrap{
-      width:92px;flex-shrink:0;opacity:.92;
-    }
-    .portrait{
-      width:92px;height:92px;
-      object-fit:cover;
-      border-radius:18px;
-      border:1px solid rgba(0,0,0,.1);
-      box-shadow:0 8px 20px rgba(0,0,0,.12);
-    }
-
-    .vision{
-      margin:12px 0 16px;
-      padding:16px 18px;
-      background:linear-gradient(135deg,#f4f7ff,#edf2ff);
-      border:1px solid #e2e6ff;
-      border-radius:18px;
-    }
-    .vision small{
-      letter-spacing:.12em;
-      font-weight:700;
-      color:#4b5cc4;
-    }
-    .vision strong{
-      display:block;
-      font-size:22px;
-      font-weight:900;
-      margin:6px 0;
-      color:#1f2a44;
-    }
+    .box h3{ margin: 0 0 6px; font-size: 15px; }
+    .box p{ margin: 0; color: var(--muted); }
 
     .pill{
-      display:inline-block;
-      margin:6px 6px 0 0;
-      padding:6px 10px;
-      font-size:13px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--muted);
+      display:inline-block; padding:6px 10px; border-radius: 999px; border:1px solid var(--line);
+      background:#fff; color: var(--muted); font-size:13px; margin:6px 8px 0 0;
     }
+
+    .cta{
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius: 12px;
+      background: var(--accent); color:#fff; font-weight: 800; border: 1px solid rgba(0,0,0,.08);
+    }
+    .cta:hover{ text-decoration:none; filter: brightness(.97); }
+    .cta-sub{ margin:10px 0 0; color: var(--muted); font-size: 13px; }
+
+    /* === Research Vision (photo on the right, like your screenshot) === */
+    .vision{
+      margin: 10px 0 18px;
+      padding: 18px 18px;
+      background: linear-gradient(135deg, var(--vision-bg-1) 0%, var(--vision-bg-2) 100%);
+      border-radius: 18px;
+      border: 1px solid var(--vision-border);
+      box-shadow: 0 8px 24px rgba(0,0,0,.04);
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+    }
+    .vision-left{ flex: 1 1 auto; min-width: 0; }
+    .vision-title{
+      font-size: 13px;
+      letter-spacing: .12em;
+      font-weight: 800;
+      color: var(--vision-title);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .vision-text{
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.6;
+      color: var(--vision-text);
+      margin-bottom: 6px;
+      letter-spacing: .02em;
+    }
+    .vision-sub{
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .vision-right{
+      flex: 0 0 auto;
+      width: 112px; /* 控えめだが、スクショ程度の存在感 */
+      display:flex;
+      justify-content:flex-end;
+    }
+    .portrait{
+      width: 112px;
+      height: 112px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 10px 24px rgba(0,0,0,.10);
+      background:#fff;
+      opacity: .95;
+    }
+
+    /* Publications */
+    .pubs{ list-style:none; padding:0; margin:0; }
+    .pubs li{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px; margin:10px 0; }
+    .pub-title{ font-weight: 800; display:block; margin-bottom:4px; }
+    .pub-authors,.pub-venue,.pub-doi{ color: var(--muted); display:block; }
+    .pub-doi{ margin-top:6px; }
+
+    .tagrow{ margin-top:8px; }
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:#f2f6ff;
+      border:1px solid #e3ebff;
+      color:#2b3a67;
+      margin-right:6px;
+    }
+
+    /* AR demo */
+    .ar-row{
+      display:grid;
+      grid-template-columns: 1fr 180px;
+      gap: 12px;
+      align-items:center;
+      margin-top:10px;
+    }
+    .ar-left{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .ar-right{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      padding:10px;
+      text-align:center;
+      box-shadow: 0 8px 20px rgba(0,0,0,.05);
+    }
+    .qr{ width: 160px; height: 160px; border-radius: 10px; display:block; margin: 0 auto; }
+    .scan-note{ margin-top:6px; color:var(--muted); font-size:12px; }
 
     footer{
+      color: var(--muted);
       text-align:center;
-      color:var(--muted);
-      padding:20px 0;
-      border-top:1px solid var(--line);
-      background:#fff;
+      padding: 18px 0 28px;
+      border-top: 1px solid var(--line);
+      background: #fff;
     }
 
-    @media(max-width:820px){
-      html{scroll-padding-top:140px;}
-      section{scroll-margin-top:140px;}
-      .about-head{flex-direction:column;}
-      .portrait-wrap{width:72px;}
-      .portrait{width:72px;height:72px;}
+    @media (max-width: 820px){
+      .wrap{ padding: 16px; }
+      .top{ flex-direction:column; align-items:flex-start; }
+      .grid{ grid-template-columns: 1fr; }
+      nav{ display:flex; flex-wrap:wrap; gap:4px; }
+
+      html{ scroll-padding-top: 140px; }
+      section{ scroll-margin-top: 140px; }
+
+      .vision{ gap: 14px; }
+      .vision-text{ font-size: 20px; }
+      .vision-right{ width: 86px; }
+      .portrait{ width: 86px; height: 86px; border-radius: 18px; }
+
+      .ar-row{ grid-template-columns: 1fr; }
+      .qr{ width: 180px; height: 180px; }
     }
   </style>
 </head>
 
 <body>
-
 <header>
-  <div class="wrap top">
-    <div>
-      <h1>岡本 英通 <span class="en">(Hidemichi Okamoto)</span></h1>
-      <div class="subtitle">教育工学 / 数学教育 / AI・VR/AR・創造性</div>
+  <div class="wrap">
+    <div class="top">
+      <div class="title">
+        <h1>岡本 英通 <span class="en">(Hidemichi Okamoto)</span></h1>
+        <p class="subtitle">教育工学 / 数学教育 / AI・VR/AR・創造性</p>
+      </div>
+      <nav aria-label="site navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#kakenhi">KAKENHI</a>
+        <a href="#contact">Contact</a>
+        <a class="note-link" href="https://note.com/hidemichiokamoto" target="_blank" rel="noreferrer">Notes</a>
+        <a class="lang-link" href="en/">EN</a>
+      </nav>
     </div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#kakenhi">KAKENHI</a>
-      <a href="#contact">Contact</a>
-      <a href="https://note.com/hidemichiokamoto" target="_blank">Notes</a>
-      <a href="en/">EN</a>
-    </nav>
   </div>
 </header>
 
 <main>
 
-<!-- About -->
-<div class="slab about">
-  <div class="wrap">
-    <section id="about" class="card">
-      <div class="about-head">
-        <div style="flex:1">
-          <h2>About</h2>
-          <div class="vision">
-            <small>RESEARCH VISION</small>
-            <strong>思考が動き、創造が始まる瞬間をデザインする。</strong>
-            <div style="font-size:13px;color:var(--muted);">
-              VR/AR・AI・フェルミ推定・数学的モデリング・国際遠隔協働学習
-            </div>
+  <!-- About -->
+  <div class="section-slab slab-about">
+    <div class="wrap">
+      <section id="about" class="card">
+        <h2>About</h2>
+
+        <div class="vision">
+          <div class="vision-left">
+            <div class="vision-title">Research Vision</div>
+            <div class="vision-text">思考が動き、創造が始まる瞬間をデザインする。</div>
+            <div class="vision-sub">VR/AR・AI・フェルミ推定・数学的モデリング・国際遠隔協働学習</div>
+          </div>
+          <div class="vision-right">
+            <!-- IMPORTANT: file path and case -->
+            <img class="portrait" src="assets/Face.jpg" alt="岡本英通の顔写真" />
           </div>
         </div>
 
-        <!-- 顔写真 -->
-        <div class="portrait-wrap">
-          <img src="assets/Face.jpg" alt="岡本英通の顔写真" class="portrait">
+        <p>
+          教育工学および数学教育を専門としています。
+          VR/AR/2D環境における図形知覚、AI支援によるフェルミ推定・数学的モデリング、
+          国際遠隔交流（Remote International Exchange）、創造性の測定・育成に関する研究を行っています。
+        </p>
+
+        <div>
+          <span class="pill">VR/AR/2D</span>
+          <span class="pill">Spatial Perception</span>
+          <span class="pill">Fermi Estimation</span>
+          <span class="pill">Mathematical Modelling</span>
+          <span class="pill">Creativity</span>
+          <span class="pill">Remote International Exchange</span>
         </div>
-      </div>
-
-      <p>
-        教育工学および数学教育を専門としています。
-        VR/AR/2D環境における図形知覚、AI支援によるフェルミ推定・数学的モデリング、
-        国際遠隔交流、創造性の測定・育成に関する研究を行っています。
-      </p>
-
-      <div>
-        <span class="pill">VR/AR/2D</span>
-        <span class="pill">Spatial Perception</span>
-        <span class="pill">Fermi Estimation</span>
-        <span class="pill">Mathematical Modelling</span>
-        <span class="pill">Creativity</span>
-        <span class="pill">Remote International Exchange</span>
-      </div>
-    </section>
+      </section>
+    </div>
   </div>
-</div>
 
-<!-- 以降 Research / Publications / KAKENHI / Contact は
-     直前まで使っていた最新版をそのまま継続でOKです -->
+  <!-- Research -->
+  <div class="section-slab slab-research">
+    <div class="wrap">
+      <section id="research" class="card">
+        <h2>Research</h2>
 
-<footer>
-  © <span id="year"></span> Hidemichi Okamoto
-</footer>
+        <div class="grid">
+          <div class="box">
+            <h3>VR/AR/2D環境における空間・図形知覚</h3>
+            <p>反応時間・正確性を中心に、知覚理論と接続して比較研究を行っています。</p>
+
+            <div class="ar-row">
+              <div class="ar-left">
+                <strong>ARモデル（デモ）</strong><br/>
+                <span style="color:var(--muted); font-size:13px;">スマホで開くとイメージしやすいです。</span>
+                <div style="margin-top:10px;">
+                  <a class="cta" href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
+                    ARモデルを開く →
+                  </a>
+                  <div class="cta-sub">
+                    URL:
+                    <a href="https://hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/" target="_blank" rel="noreferrer">
+                      hidemichiokamoto-dotcom.github.io/ar-pilotstudy02/Grosse_kugel_volume/
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ar-right">
+                <img class="qr"
+                  alt="ARモデルへのQRコード"
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fhidemichiokamoto-dotcom.github.io%2Far-pilotstudy02%2FGrosse_kugel_volume%2F" />
+                <div class="scan-note">Scan to open AR</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>AI支援によるフェルミ推定・数学的モデリング</h3>
+            <p>
+              フェルミ推定および数学的モデリングにおいて、問題の構造化・仮定設定・数量化・検証・説明のプロセスをAIが支援する学習環境を設計し、
+              生徒・学生の方略や思考過程、柔軟性の変化を分析する研究を行っています。
+            </p>
+            <p style="color:var(--muted); font-size:14px; margin-top:6px;">
+              ※ フェルミ推定：現実の曖昧な事象を仮定と推定によって数量化する課題です。
+              有名な例に「シカゴに何人のピアノ調律師がいますか？」という問いがあります。
+              このような課題は創造性を引き出すと言われています。 ／
+              数学的モデリング：現実世界の問題を数理的に表現し解釈する数学的活動です。
+            </p>
+
+            <div style="margin-top:10px;">
+              <strong>関連書籍：</strong>
+              <a href="https://www.gensu.jp/product/%E5%89%B5%E9%80%A0%E7%9A%84%E6%80%9D%E8%80%83%E5%8A%9B%E3%82%92%E9%AB%98%E3%82%81%E3%82%8B%E6%8E%88%E6%A5%AD%E3%81%A5%E3%81%8F%E3%82%8A%E3%83%BC%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9F%E6%8E%A8%E5%AE%9A/"
+                 target="_blank" rel="noreferrer">
+                創造的思考力を高める授業づくり ― フェルミ推定
+              </a>
+              <div style="color:var(--muted); font-size:13px; margin-top:4px;">
+                ※ 在庫切れの場合は、お手数ですが <a href="#contact">Contact</a> に記載の連絡先までご連絡ください。
+              </div>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>国際遠隔交流（Remote International Exchange）による数学教育の共同ゼミ</h3>
+            <p>
+              ドイツの研究者・大学と連携し、教員養成課程の学生を対象とした数学教育に関する国際遠隔共同ゼミを実施しています。
+              Zoomの自動翻訳字幕機能等を活用し、言語の壁を越えた協働的学習環境の設計と教育的効果を検討する研究を行っています。
+            </p>
+          </div>
+
+          <div class="box">
+            <h3>創造性の測定・育成（数学教育×教育工学）</h3>
+            <p>創造性を指標化して測定し、課題設計やAI支援によって育成する研究を行っています。</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Publications -->
+  <div class="section-slab slab-publications">
+    <div class="wrap">
+      <section id="publications" class="card">
+        <h2>Publications</h2>
+
+        <p style="margin:0 0 12px; color: var(--muted);">
+          代表的な業績（Selected Publications）を掲載しています。その他の業績は
+          <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">researchmap</a>
+          をご覧ください。
+        </p>
+
+        <ul class="pubs">
+          <li>
+            <span class="pub-title">
+              Analysis of the Relationship between Creativity in Fermi Problems Measured by Applying Information Theory, Creativity in Psychology, and Mathematical Creativity
+            </span>
+            <span class="pub-authors">Hidemichi Okamoto, Mutfried Hartmann, Tetsushi Kawasaki</span>
+            <span class="pub-venue">Education Sciences 13(3), 315, 2023-03-18</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.3390/educsci13030315" target="_blank" rel="noreferrer">10.3390/educsci13030315</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">Creativity</span><span class="tag">Fermi Estimation</span><span class="tag">Information Theory</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="pub-title">CAN MATHEMATICAL MODELING ACTIVITIES BE ENHANCED USING HEAD-MOUNTED DISPLAY-TYPE VIRTUAL REALITY?</span>
+            <span class="pub-authors">Hidemichi Okamoto</span>
+            <span class="pub-venue">EDULEARN25 Proceedings, 1932–1941, 2025-07</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.21125/edulearn.2025.0565" target="_blank" rel="noreferrer">10.21125/edulearn.2025.0565</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">VR</span><span class="tag">Mathematical Modelling</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              A Study of Image Editing AI Awareness in Children: Can AI that Lets Still Images Speak Capture the Interest of Young Children?
+            </span>
+            <span class="pub-authors">Hidemichi Okamoto, Hironori Tachizaki</span>
+            <span class="pub-venue">Journal of Educational Technology Development and Exchange 18(1), 117–126, 2025-06</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.18785/jetde.1802.06" target="_blank" rel="noreferrer">10.18785/jetde.1802.06</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">AI</span><span class="tag">Children</span><span class="tag">Image Editing</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="pub-title">
+              Remote International Exchange in Mathematics Education: Evaluating the Educational Impact of Real-Time Translation Technology Using Zoom
+            </span>
+            <span class="pub-authors">Hidemichi Okamoto, Kyomi Takuma, Thomas Borys, Tetsushi Kawasaki</span>
+            <span class="pub-venue">2025 International Conference on Culture-Oriented Science & Technology (CoST), 37–42, 2025-09</span>
+            <span class="pub-doi">
+              DOI: <a href="https://doi.org/10.1109/CoST68045.2025.00017" target="_blank" rel="noreferrer">10.1109/CoST68045.2025.00017</a>
+            </span>
+            <div class="tagrow">
+              <span class="tag">Remote International Exchange</span><span class="tag">Zoom</span><span class="tag">Translation</span>
+            </div>
+          </li>
+        </ul>
+
+        <div style="margin-top:14px;">
+          <a class="cta" href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">
+            researchmapで全業績を見る →
+          </a>
+          <div class="cta-sub">論文・学会発表・研究費・委員歴など、全情報はこちらに集約しています。</div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- KAKENHI -->
+  <div class="section-slab slab-kakenhi">
+    <div class="wrap">
+      <section id="kakenhi" class="card">
+        <h2>KAKENHI（科研費）</h2>
+        <p style="margin:0 0 10px;">科研費（KAKENHI）により、国際連携を基盤としたVR活用の学習カリキュラム・教材開発に取り組んでいます。</p>
+        <div class="box">
+          <h3 style="margin-top:0;">国際連携によるHMD型VRを活用した教科横断的な学習のカリキュラムと教材の開発</h3>
+          <p style="color:var(--muted); margin:0;">KAKENHI Project: 24K22786</p>
+          <div style="margin-top:10px;">
+            <a class="cta" href="https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-24K22786" target="_blank" rel="noreferrer">KAKENページを見る →</a>
+            <div class="cta-sub">研究概要・期間・研究組織などの詳細は、上記リンクからご確認ください。</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Contact -->
+  <div class="section-slab slab-contact">
+    <div class="wrap">
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <ul class="meta">
+          <li><strong>Affiliation:</strong> 大垣女子短期大学</li>
+          <li><strong>Email:</strong> <a href="mailto:okamoto@ogaki-tandai.ac.jp">okamoto@ogaki-tandai.ac.jp</a></li>
+          <li style="font-size:13px; color:var(--muted); margin-top:8px;">
+            ※ Notes（note）に掲載している内容は、研究アイデアや実践のメモ書き・ラフな記録が中心です。正式な研究成果は Publications をご参照ください。
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <footer>© <span id="year"></span> Hidemichi Okamoto</footer>
 
 </main>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
