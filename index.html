@@ -3,87 +3,226 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="岡本英通（教育工学・数学教育・AI/VR/AR・創造性）の研究者サイト" />
   <title>岡本英通 | Research</title>
+
   <style>
+    :root{
+      --bg: #ffffff;
+      --text: #111;
+      --muted: #5f6368;
+      --line: #e9eaee;
+      --card: #f7f8fb;
+      --accent: #1f6feb; /* GitHubっぽい青 */
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --radius: 16px;
+    }
+    *{ box-sizing: border-box; }
+    html,body{ margin:0; padding:0; }
     body{
-      margin:0;
-      font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-      background:#ffffff;
-      color:#111;
-      line-height:1.7;
+      font-family: system-ui,-apple-system,"Segoe UI",sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
     }
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    /* layout */
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 18px; }
     header{
-      border-bottom:1px solid #e5e5e5;
-      padding:28px 18px 18px;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
     }
-    h1{margin:0 0 6px;font-size:26px;}
-    .sub{margin:0;color:#666;}
-    main{max-width:900px;margin:0 auto;padding:18px;}
-    section{margin-bottom:28px;}
-    h2{border-bottom:1px solid #eee;padding-bottom:6px;}
-    ul{padding-left:20px;}
-    footer{border-top:1px solid #eee;margin-top:40px;padding:18px;color:#666;text-align:center;}
-    a{color:inherit;}
+    .top{
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 0;
+    }
+    .title h1{ margin:0; font-size: 24px; letter-spacing: .2px; }
+    .title .en{ font-size: 13px; color: var(--muted); font-weight: 600; margin-left: 8px; }
+    .subtitle{ margin: 6px 0 0; color: var(--muted); }
+
+    nav a{
+      display:inline-block;
+      padding: 8px 10px;
+      border-radius: 999px;
+      color: var(--text);
+      border: 1px solid transparent;
+    }
+    nav a:hover{
+      border-color: var(--line);
+      background: #fff;
+      text-decoration: none;
+    }
+
+    /* cards */
+    main{ padding: 16px 0 40px; }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px 16px 12px;
+      margin: 14px 0;
+    }
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .meta{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .meta li{ margin: 6px 0; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .box{
+      background:#fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px 12px 10px;
+    }
+    .box h3{ margin: 0 0 6px; font-size: 15px; }
+    .box p{ margin: 0; color: var(--muted); }
+
+    .pill{
+      display:inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      font-size: 13px;
+      margin: 6px 8px 0 0;
+    }
+
+    footer{
+      color: var(--muted);
+      text-align:center;
+      padding: 18px 0 28px;
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    @media (max-width: 820px){
+      .top{ flex-direction: column; align-items: flex-start; }
+      .grid{ grid-template-columns: 1fr; }
+      nav{ display:flex; flex-wrap: wrap; gap: 6px; }
+    }
   </style>
 </head>
-<body>
 
+<body>
 <header>
-  <h1>岡本 英通 <span style="font-size:14px;color:#666;">(Hidemichi Okamoto)</span></h1>
-  <p class="sub">教育工学 / 数学教育 / AI・VR/AR・創造性</p>
+  <div class="wrap">
+    <div class="top">
+      <div class="title">
+        <h1>岡本 英通 <span class="en">(Hidemichi Okamoto)</span></h1>
+        <p class="subtitle">教育工学 / 数学教育 / AI・VR/AR・創造性</p>
+      </div>
+      <nav aria-label="site navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
 </header>
 
-<main>
+<main class="wrap">
 
-<section>
-  <h2>About</h2>
-  <p>
-    教育工学および数学教育を専門とし、VR/AR/2D環境における図形知覚、AI支援によるFermi Problems、教育DXに関する研究を行っています。
-    日独共同研究や遠隔協働学習の実践も進めています。
-  </p>
-</section>
+  <section id="about" class="card">
+    <h2>About</h2>
+    <p>
+      教育工学および数学教育を専門とし、VR/AR/2D環境における図形知覚、AI支援によるFermi Problems、教育DXに関する研究を行っています。
+      日独共同研究や遠隔協働学習の実践も進めています。
+    </p>
+    <div>
+      <span class="pill">VR/AR/2D</span>
+      <span class="pill">Spatial Perception</span>
+      <span class="pill">Fermi Problems</span>
+      <span class="pill">Mathematical Modelling Task</span>
+      <span class="pill">Creativity</span>
+    </div>
+  </section>
 
-<section>
-  <h2>Research</h2>
-  <ul>
-    <li>VR/AR/2D環境における空間・図形知覚の比較研究</li>
-    <li>AI支援によるFermi Problems / Mathematical Modelling Task</li>
-    <li>教育DX・生成AIを用いた学習支援設計</li>
-    <li>Remote International Exchange（遠隔国際交流）</li>
-  </ul>
-</section>
+  <section id="research" class="card">
+    <h2>Research</h2>
+    <div class="grid">
+      <div class="box">
+        <h3>VR/AR/2D環境における空間・図形知覚</h3>
+        <p>反応時間・正確性を中心に、知覚理論と接続して比較研究を行います。</p>
+      </div>
+      <div class="box">
+        <h3>AI支援によるFermi Problems / Mathematical Modelling Task</h3>
+        <p>推定・検証・説明のプロセスを支援し、方略や学習の変化を分析します。</p>
+      </div>
+      <div class="box">
+        <h3>教育DX：生成AIを用いた学習支援設計</h3>
+        <p>授業設計・教材開発・評価を通して、学習環境の改善を探究します。</p>
+      </div>
+      <div class="box">
+        <h3>創造性の測定・育成（数学教育×教育工学）</h3>
+        <p>創造性の指標化（測定）と、課題設計・AI支援による育成の両面から検討します。</p>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <h2>Publications</h2>
-  <p>※ 準備中（後ほどDOI・PDFリンクを追加）</p>
-  <ul>
-    <li>論文タイトル1（年）</li>
-    <li>論文タイトル2（年）</li>
-  </ul>
-</section>
+  <section id="publications" class="card">
+    <h2>Publications</h2>
+    <p style="margin:0 0 8px;">
+      業績一覧は researchmap に掲載しています：
+      <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">
+        https://researchmap.jp/hidemichiokamoto
+      </a>
+    </p>
+    <ul class="meta">
+      <li>最新の論文・学会発表・研究費等は上記リンクからご覧ください。</li>
+      <li>必要に応じて、このページに「代表業績（Selected Publications）」を追記できます。</li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Projects</h2>
-  <ul>
-    <li>VR/AR/2D Pilot Study（図形課題・反応時間・正確性）</li>
-    <li>Fermi-AI プロジェクト（生徒の推定方略支援）</li>
-    <li>日独教員養成学生のRemote International Exchange</li>
-  </ul>
-</section>
+  <section id="projects" class="card">
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>VR/AR/2D Pilot Study</strong>：課題デザイン・計測（反応時間/正確性）・分析</li>
+      <li><strong>Fermi-AI</strong>：生徒の推定方略や柔軟性を支援する対話設計</li>
+      <li><strong>Remote International Exchange</strong>：日独の教員養成学生の協働学習（Zoom字幕等）</li>
+    </ul>
+  </section>
 
-<section>
-  <h2>Contact</h2>
-  <p>
-    Email: yourmail@example.com<br>
-    GitHub: https://github.com/hidemichiokamoto-dotcom
-  </p>
-</section>
+  <section id="contact" class="card">
+    <h2>Contact</h2>
+    <ul class="meta">
+      <li><strong>Email:</strong> <a href="mailto:yourmail@example.com">yourmail@example.com</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/hidemichiokamoto-dotcom" target="_blank" rel="noreferrer">https://github.com/hidemichiokamoto-dotcom</a></li>
+      <li><strong>researchmap:</strong> <a href="https://researchmap.jp/hidemichiokamoto" target="_blank" rel="noreferrer">https://researchmap.jp/hidemichiokamoto</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Hidemichi Okamoto
+  </footer>
 
 </main>
 
-<footer>
-  © 2026 Hidemichi Okamoto
-</footer>
-
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
